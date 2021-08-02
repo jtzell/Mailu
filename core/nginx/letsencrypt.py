@@ -10,6 +10,8 @@ command = [
     "-n", "--agree-tos", # non-interactive
     "-d", os.environ["HOSTNAMES"],
     "-m", "{}@{}".format(os.environ["POSTMASTER"], os.environ["DOMAIN"]),
+    "--authenticator", "certbot-dns-acmedns:dns-acmedns",
+    "--certbot-dns-acmedns:dns-acmedns-credentials", "/conf/acmedns-credentials.ini",
     "certonly", "--standalone",
     "--cert-name", "mailu",
     "--preferred-challenges", "dns",
