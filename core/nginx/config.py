@@ -34,9 +34,9 @@ args["TLS"] = {
     "notls": None
 }[args["TLS_FLAVOR"]]
 
-# if args["TLS"] and not all(os.path.exists(file_path) for file_path in args["TLS"]):
-#     print("Missing cert or key file, disabling TLS")
-#     args["TLS_ERROR"] = "yes"
+if args["TLS"] and not all(os.path.exists(file_path) for file_path in args["TLS"]):
+    print("Missing cert or key file, disabling TLS")
+    args["TLS_ERROR"] = "yes"
 
 # Build final configuration paths
 conf.jinja("/conf/tls.conf", args, "/etc/nginx/tls.conf")
