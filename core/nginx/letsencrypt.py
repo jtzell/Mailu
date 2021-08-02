@@ -11,6 +11,7 @@ command = [
     "-d", os.environ["HOSTNAMES"],
     "-m", "{}@{}".format(os.environ["POSTMASTER"], os.environ["DOMAIN"]),
     "--manual", "--manual-auth-hook", "/acme-dns-auth.py",
+    "--manual-public-ip-logging-ok",
     "certonly",
     "--cert-name", "mailu",
     "--preferred-challenges", "dns",
