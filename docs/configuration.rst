@@ -41,7 +41,7 @@ The ``AUTH_RATELIMIT`` holds a security setting for fighting attackers that
 try to guess user passwords. The value is the limit of failed authentication attempts
 that a single IP address can perform against IMAP, POP and SMTP authentication endpoints.
 
-If ``AUTH_RATELIMIT_SUBNET`` is ``True`` (which is the default), the ``AUTH_RATELIMIT``
+If ``AUTH_RATELIMIT_SUBNET`` is ``True`` (default: False), the ``AUTH_RATELIMIT``
 rules does also apply to auth requests coming from ``SUBNET``, especially for the webmail.
 If you disable this, ensure that the rate limit on the webmail is enforced in a different
 way (e.g. roundcube plug-in), otherwise an attacker can simply bypass the limit using webmail.
@@ -80,9 +80,10 @@ go and fetch new email if available. Do not use too short delays if you do not
 want to be blacklisted by external services, but not too long delays if you
 want to receive your email in time.
 
-The ``RECIPIENT_DELIMITER`` is a character used to delimit localpart from a
-custom address part. For instance, if set to ``+``, users can use addresses
-like ``localpart+custom@domain.tld`` to deliver mail to ``localpart@domain.tld``.
+The ``RECIPIENT_DELIMITER`` is a list of characters used to delimit localpart
+from a custom address part. For instance, if set to ``+-``, users can use
+addresses like ``localpart+custom@example.com`` or ``localpart-custom@example.com``
+to deliver mail to ``localpart@example.com``.
 This is useful to provide external parties with different email addresses and
 later classify incoming mail based on the custom part.
 

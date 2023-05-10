@@ -16,8 +16,8 @@ command = [
     "--cert-name", "mailu",
     "--preferred-challenges", "dns",
     "--keep-until-expiring",
-    "--rsa-key-size", "4096",
     "--config-dir", "/certs/letsencrypt",
+    "--renew-with-new-domains",
     "--post-hook", "/config.py",
     "--debug-challenges"
 ]
